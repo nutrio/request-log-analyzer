@@ -43,7 +43,7 @@ Subject: #{subject}
 END_OF_MESSAGE
 
       unless @options[:debug]
-        Net::SMTP.start(@host, @port) do |smtp|
+        Net::SMTP.start(@host, @port, tls_verify: false) do |smtp|
           smtp.send_message msg, from, to
         end
       end
